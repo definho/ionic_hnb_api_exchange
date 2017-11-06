@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sve valute + datum</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Odabir datuma: </ion-label>
+        <ion-datetime displayFormat="DD.MM.YYYY." pickerFormat="DD.MM.YYYY." [(ngModel)]="datum" name="datum" (ionChange)="GetTecajDatum(datum)"></ion-datetime>
+    </ion-item>
+  <!--
+<ion-grid>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <form (ngSubmit)="saveForm(unos1, unos2)">
+            <ion-item>
+              <ion-label fixed>
+                Valuta 1: 
+              </ion-label>
+              <ion-input [(ngModel)]="unos1" name="unos1" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label fixed>
+                Valuta 2: 
+              </ion-label>
+              <ion-input [(ngModel)]="unos2" name="unos2" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datum" name="datum"></ion-datetime>
+            </ion-item>
+            <button ion-button type="submit" block>Save</button>
+            <button ion-button (click)="GetTecajFull()">Get FULL</button>
+            <button ion-button (click)="GetTecajDatum(datum)">Datum</button>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+-->
+    
+  
+  <ion-list>
+    <ion-item *ngFor="let u of tecaj; let first = first">
+        <h1 *ngIf="first">Datum: {{u.datum | date: 'dd.MM.yyyy.'}}</h1>
+        <h2>{{u.drzava}} | {{u.valuta}}</h2>
+        <p>Kupovni: {{u.kupovni_tecaj}}</p>
+        <p>Srednji: {{u.srednji_tecaj}}</p>
+        <p>Prodajni: {{u.prodajni_tecaj}}</p>
+    </ion-item>
+  </ion-list> 
+
+</ion-content>

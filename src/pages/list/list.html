@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dvije valute</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<ion-grid>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <form (ngSubmit)="saveForm(unos1, unos2)">
+            <ion-item>
+              <ion-label fixed>
+                Valuta 1: 
+              </ion-label>
+              <ion-select [(ngModel)]="unos1" name="unos1" type="text">
+                  <ion-option *ngFor="let v of lista_valuta" value="{{v}}">{{v}}</ion-option> 
+              </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>
+                  Valuta 2: 
+                </ion-label>
+                <ion-select [(ngModel)]="unos2" name="unos2" type="text">
+                    <ion-option *ngFor="let c of lista_valuta" value="{{c}}">{{c}}</ion-option> 
+                </ion-select>
+              </ion-item>
+            
+            <button ion-button type="submit">Save</button>
+           
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+  <ion-list>
+    <ion-item *ngFor="let u of tecaj; let first = first">
+        <h1 *ngIf="first">Datum: {{u.datum | date: 'dd.MM.yyyy.'}}</h1>
+        <h2>{{u.drzava}} | {{u.valuta}}</h2>
+        <p>Kupovni: {{u.kupovni_tecaj}}</p>
+        <p>Srednji: {{u.srednji_tecaj}}</p>
+        <p>Prodajni: {{u.prodajni_tecaj}}</p>
+    </ion-item>
+  </ion-list> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- DEFAULT TEMPLATE
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-icon [name]="item.icon" item-start></ion-icon>
+      {{item.title}}
+      <div class="item-note" item-end>
+        {{item.note}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+  -->
+</ion-content>
